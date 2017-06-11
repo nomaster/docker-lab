@@ -1,0 +1,34 @@
+@import "bootswatch/slate/variables";
+@import "bootstrap";
+@import "bootstrap/theme";
+@import "formtastic-bootstrap";
+@import "bootswatch/slate/bootswatch";
+
+// make room for navigation bar
+body { padding-top: 70px; }
+
+.navbar-brand {
+  background-image: image_url('mete-logo.svg');
+  background-position: 0.5em 0.5em;
+  background-repeat: no-repeat;
+  background-size: 2em;
+  padding-left: 3em;
+}
+
+img.disabled {
+  //see http://blog.nmsdvid.com/css-filter-property/
+  //see http://stackoverflow.com/a/11842712
+  filter: grayscale(100%) contrast(30%);
+}
+
+.drink-panel {
+  display: flex;
+  flex-direction: column;
+  height: 165px;
+  width: 160px;
+}
+
+.panel-body {
+  flex: 1 1 0;
+  overflow: hidden;
+}

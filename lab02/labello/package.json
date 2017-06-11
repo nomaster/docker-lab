@@ -1,0 +1,52 @@
+{
+  "name": "labello",
+  "version": "1.0.0",
+  "description": "A printing service for the **Brother QL-720NW** and similar label printer.   The brotherprint library  is from: https://github.com/fozzle/python-brotherprint",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --bail",
+    "start": "webpack --progress --watch",
+    "prod": "NODE_ENV=production npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaosdorf/labello.git"
+  },
+  "author": "marudor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chaosdorf/labello/issues"
+  },
+  "homepage": "https://github.com/chaosdorf/labello#readme",
+  "dependencies": {
+    "elemental": "^0.6.1",
+    "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.0.2",
+    "react-dom": "^15.5.4",
+    "react-tap-event-plugin": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-remove-console": "^6.8.1",
+    "babel-plugin-transform-remove-debugger": "^6.8.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "css-loader": "^0.28.0",
+    "eslint": "^3.19.0",
+    "eslint-config-marudor": "^4.2.2",
+    "eslint-loader": "^1.3.0",
+    "file-loader": "^0.11.1",
+    "inline-css-loader": "^2.1.2",
+    "less": "^2.6.1",
+    "less-loader": "^4.0.3",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

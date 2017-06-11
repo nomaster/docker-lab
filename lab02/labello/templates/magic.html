@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>laibelprinter</title>
+  <script>
+  window.sizesBitmap = {{sizesBitmap}}.map(x => Number.parseInt(x))
+  .sort((a, b) => a - b)
+  .map(x => x.toString())
+  .map(x => ({
+    label: x,
+    value: x,
+  }));
+  window.sizesOutline = {{sizesOutline}}.map(x => Number.parseInt(x))
+  .sort((a, b) => a - b)
+  .map(x => x.toString())
+  .map(x => ({
+    label: x,
+    value: x,
+  }));
+  window.fontsOutline = {{fontsOutline}}.map(x => ({
+    label: x,
+    value: x,
+  }));
+  window.fontsBitMap = {{fontsBitMap}}.map(x => ({
+    label: x,
+    value: x,
+  }));
+  window.aligns = {{aligns}}.map(x => ({
+    label: x,
+    value: x,
+  }));
+  window.charStyles = {{charStyles}}.map(x => ({
+    label: x,
+    value: x,
+  }));
+  window.cuts = {{cuts}}
+  </script>
+  <script src="app.js"></script>
+</head>
+<body style="display: flex; justify-content: center; padding: 5px">
+  <div id="laibel" style="max-width:100%;"></div>
+</body>
+</html>

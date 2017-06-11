@@ -1,0 +1,37 @@
+version: "2"
+
+networks:
+  appservers:
+    driver: bridge
+
+volumes:
+  assets:
+  uploads:
+  database:
+
+services:
+
+  mete:
+    build: mete 
+    restart: always
+    volumes:
+      - assets:/mete/public/assets
+      - uploads:/mete/public/system
+      - database:/mete/database
+    networks:
+      appservers:
+        aliases:
+          - mete 
+
+  nginx:
+    build: nginx
+    restart: always
+    volumes:
+      - assets:/mete/public/assets
+      - uploads:/mete/public/system
+    ports:
+      - "80:80"
+    networks:
+      appservers:
+        aliases:
+          - nginx

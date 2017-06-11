@@ -1,0 +1,58 @@
+- model_class = Audit
+
+= form_tag({}, { :class => 'form-horizontal', :method => :get }) do
+  .control-group
+    = label_tag :start_date, "Show audits from ", class: 'control-label'
+    .controls
+      = select_date @start_date, prefix: :start_date
+  .control-group
+    = label_tag :end_date, "until", class: 'control-label'
+    .controls
+      = select_date @end_date, prefix: :end_date
+  - unless @user.nil?
+    %input{:type => "hidden", :name => "user", :value => @user.id}
+  .control-group
+    .controls
+      %button.btn.btn-primary
+        Filter
+
+
+%p
+  %strong Sum of all deposits made:
+  = @deposits_sum
+%p
+  %strong Sum of all payments made:
+  = @payments_sum
+%p
+  %strong Sum of all transactions:
+  = @sum
+
+%p
+  %strong
+    = "Showing data from #{@start_date} to #{@end_date} for "
+    = @user.nil? ? "all users" : "user #{@user.name}"
+    \:
+
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %th Timestamp
+    %th Amount
+    %th Drink
+  - @audits.each do |audit|
+    - if audit.difference > 0
+      %tr.success
+        %td= audit.created_at
+        %td
+          = show_amount audit.difference
+        %td n/a
+    - else
+      %tr.error
+        %td= audit.created_at
+        %td
+          = show_amount audit.difference
+        %td
+          - drink = Drink.find_by(:id => audit.drink)
+          - if drink.nil?
+            n/a
+          - else
+            = drink.name

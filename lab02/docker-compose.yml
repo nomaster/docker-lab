@@ -1,0 +1,35 @@
+version: "2"
+
+networks:
+  appservers:
+    driver: bridge
+
+services:
+
+  labello:
+    build: labello
+    restart: always
+    networks:
+      appservers:
+        aliases:
+          - labello
+
+  pawebcontrol:
+    build: pawebcontrol 
+    restart: always
+    environment:
+      - PULSE_SERVER=pulse
+    networks:
+      appservers:
+        aliases:
+          - pawebcontrol
+
+  nginx:
+    build: nginx
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      appservers:
+        aliases:
+          - nginx

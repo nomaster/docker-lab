@@ -1,0 +1,43 @@
+- model_class = User
+- content_for :actions do
+  %li
+    = link_to 'edit user', edit_user_path(@user)
+  - if @user.audit?
+    %li
+      = link_to 'show logs', audits_path(:user => @user)
+  %li
+    = link_to 'delete user', @user, :method => :delete, :data => {:confirm => "Really delete #{@user.name}’s account?"}
+.page-header
+  %h1
+    = "Hi, #{@user.name}"
+    %small
+      Pick Your Poison.
+
+.row
+  .col-xs-3.col-sm-2.col-md-1
+    = gravatar(@user)
+  .col-xs-9.col-sm-10.col-md-11
+    %dl.dl-horizontal
+      %dt
+        = model_class.human_attribute_name(:email)
+      %dd
+        = @user.email
+      %dt
+        = model_class.human_attribute_name(:balance)
+      %dd
+        = show_amount @user.balance
+
+%hr
+
+%form{:method => "POST", :action => buy_barcode_user_path}
+  %small
+    Buy a drink by scanning a barcode: 
+  %input{:name => "barcode"}
+
+%hr
+
+.row.drinks
+  = render @drinks, :locals => {:user => @user}
+
+.row
+  = render partial: 'bills'
